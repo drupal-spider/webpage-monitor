@@ -15,7 +15,7 @@ Create a `.env` file in the root of this project:
 For example
 
 ```dosini
-PAGE_URLS = https://www.google.com/search?q=covid19,https://www.google.com/search?q=news
+PAGE_URLS = {"1": "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=fake+objects","2": "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=ckeditor+link"}
 VIEW_PORT = { "width": "1440", "height": "600" }
 HEADLESS = true
 ```
