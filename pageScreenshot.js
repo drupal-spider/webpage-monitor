@@ -43,7 +43,12 @@ const scraperObject = {
 			imgPath = 'screenshot/' + imgIndex + '.jpg'
 			diffImgPath = 'screenshot/' + imgIndex + '-diff.jpg'
 			if (!fs.existsSync(imgPath)) {
+				liveData = await page.screenshot({
+					type: 'jpeg',
+					fullPage: true   // take a fullpage screenshot
+				});
 				this.saveScreenshot(liveData, imgPath)
+				console.log('Screenshot saved.')
 			}
 			else {
 				// Compare the backup screenshot with the live one.
