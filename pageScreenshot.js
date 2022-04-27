@@ -9,7 +9,7 @@ const scraperObject = {
 		304
 	],
 	async take(browser) {
-		let pageURLs = process.env.PAGE_URLS.split(',')
+		let pageURLs = JSON.parse(process.env.PAGE_URLS)
 		let viewPort = JSON.parse(process.env.VIEW_PORT)
 		viewPort.width = parseInt(viewPort.width)
 		viewPort.height = parseInt(viewPort.height)
@@ -41,7 +41,7 @@ const scraperObject = {
 			page.waitForTimeout(3000);
 			console.log(pagURL)
 			imgPath = 'screenshot/' + imgIndex + '.jpg'
-			diffImgPath = 'screenshot/' + imgIndex + '-diff.jpg'
+			diffImgPath = 'screenshot/diff/' + imgIndex + '-diff.jpg'
 			if (!fs.existsSync(imgPath)) {
 				liveData = await page.screenshot({
 					type: 'jpeg',
