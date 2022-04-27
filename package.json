@@ -1,7 +1,7 @@
 {
-  "name": "website_comparison",
+  "name": "webpage-monitor",
   "version": "1.0.0",
-  "description": "a website comparison tool",
+  "description": "a web page monitor tool",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
