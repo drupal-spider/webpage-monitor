@@ -18,6 +18,11 @@ const scraperObject = {
 		// Set up the view port.
 		await page.setViewport(viewPort);
 		try {
+			// Make sure the screenshot folder exists
+			if (!fs.existsSync('screenshot/diff')) {
+				// Create the folder for saving screenshots.
+				fs.mkdirSync('screenshot/diff', { recursive: true });
+			}
 			// Take screenshots for the base pathes.
 			for (i in pageURLs) {
 				await this.takeScreenshots(pageURLs[i], i, page)
@@ -83,13 +88,7 @@ const scraperObject = {
 						}
 						else {
 							if (fs.existsSync(diffImgPath)) {
-								fs.unlink(diffImgPath, (err) => {
-									if (err) {
-									  console.error(err)
-									  return
-									}							  
-									//file removed
-								})
+								fs.unlinkSync(diffImgPath)
 							}
 							console.log('No change.')
 						}
