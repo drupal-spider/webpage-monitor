@@ -1,5 +1,5 @@
-# website-comparison
-A simple tool to check the changes of a web page. A common use case is to monitor changes of a website.
+# webpage-monitor
+A simple tool to check the changes to web pages. A common use case is to monitor any visible changes to a website.
 
 ## Install
 
