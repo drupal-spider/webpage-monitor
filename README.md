@@ -29,3 +29,7 @@ The `.env` file contains the following arguments:
 ## Run
 
 `npm run start`
+
+## Screenshots output
+
+First running, the screenshots for each page will be saved under the folder 'screenshot' as the baseline image to compare with. Since then, everytime this program is executed, it will compare the live screenshot with the baseline image to figure out if any visible change to each page.  
