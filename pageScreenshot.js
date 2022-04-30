@@ -105,10 +105,6 @@ const scraperObject = {
 		try {
 			// Saving the screenshot.
 			fs.writeFileSync(imgPath, imgData)
-/* 			// Saving the diff picutre.
-			let jpegImageData = JPEG.encode(diff, 50); // image quality is 50.
-			fs.writeFileSync(imgPath + 'diff.jpg', jpegImageData.data)
-			console.log(imgPath + 'diff.jpg' + ' is saved.') */
 		}
 		catch (err) {
 			console.log(err);
