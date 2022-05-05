@@ -18,6 +18,7 @@ For example
 PAGE_URLS = {"1": "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=fake+objects","2": "https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=ckeditor+link"}
 VIEW_PORT = { "width": "1440", "height": "600" }
 HEADLESS = true
+KEEP_BASE = false
 ```
 
 The `.env` file contains the following arguments:
