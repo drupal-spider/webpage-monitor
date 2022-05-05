@@ -25,6 +25,7 @@ The `.env` file contains the following arguments:
 * PAGE_URLS: The URLs to check.
 * VIEW_PORT: The view port dimension.
 * HEADLESS: Whether to run browser in headless mode.
+* KEEP_BASE: Whether keep the baseline image as backup.
 
 ## Run
 
