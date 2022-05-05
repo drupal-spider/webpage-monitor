@@ -36,10 +36,11 @@ const scraperObject = {
 	},
 	async takeScreenshots(pagURL, imgIndex, page) {
 		let liveData, backupData, imgPath, diffImgPath
+		const KEEP_BASE = process.env.KEEP_BASE === "true";
 		try {
 			// Go to the page.
 			let response = await page.goto(pagURL, { waitUntil: ['domcontentloaded', 'networkidle0'] });
-			if (!this.successCodes.includes(response.status())) {	
+			if (!this.successCodes.includes(response.status())) {
 				console.log(response.status() + ':' + pagURL)
 				return;
 			}
@@ -47,6 +48,7 @@ const scraperObject = {
 			console.log(pagURL)
 			imgPath = 'screenshot/' + imgIndex + '.jpg'
 			diffImgPath = 'screenshot/diff/' + imgIndex + '-diff.jpg'
+			backupPath = 'screenshot/diff/' + imgIndex + '-baseline.jpg'
 			if (!fs.existsSync(imgPath)) {
 				liveData = await page.screenshot({
 					type: 'jpeg',
@@ -71,7 +73,7 @@ const scraperObject = {
 							height: img1.height
 						}
 					});
-					if (liveData) {				
+					if (liveData) {
 						img2 = JPEG.decode(liveData)
 						const maxSize = img1.height * img1.width * 4
 						const diffBuffer = Buffer.alloc(maxSize)
@@ -79,6 +81,16 @@ const scraperObject = {
 						// Compare those two screenshots.
 						const numDiffPixels = pixelmatch(img1.data, img2.data, diff.data, img1.width, img1.height, { threshold: 0.2 })
 						if (numDiffPixels) {
+							if (KEEP_BASE) {
+								// Save the backup image.
+								fs.writeFile(backupPath, backupData, (err) => {
+									if (err)
+									  console.log(err);
+									else {
+									  console.log("Backup image saved.");
+									}
+								  });
+							}
 							// Save the new screenshot
 							this.saveScreenshot(liveData, imgPath)
 							// Save the diff img.
