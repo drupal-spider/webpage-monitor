@@ -48,7 +48,7 @@ const scraperObject = {
 			console.log(pagURL)
 			imgPath = 'screenshot/' + imgIndex + '.jpg'
 			diffImgPath = 'screenshot/diff/' + imgIndex + '-diff.jpg'
-			backupPath = 'screenshot/diff/' + imgIndex + '-baseline.jpg'
+			backupPath = 'screenshot/' + imgIndex + '-baseline.jpg'
 			if (!fs.existsSync(imgPath)) {
 				liveData = await page.screenshot({
 					type: 'jpeg',
